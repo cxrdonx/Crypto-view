@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.exchange'
+version '0.1.0'
+
+application{
+    mainClassName = 'com.exchange.coinsearch.CoinSearch'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'com.beust', name: 'jcommander', version: '1.78'
+    implementation group: 'io.github.openfeign', name: 'feign-core', version: '10.9'
+    implementation group: 'io.github.openfeign', name: 'feign-gson', version: '10.9'
+
+}
