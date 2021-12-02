@@ -2,6 +2,9 @@ package com.exchange.coinsearch;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class CoinData {
         private String id;
         private String name;
@@ -107,5 +110,47 @@ public class CoinData {
 
     public void setQuote(String[] quote) {
         this.quote = quote;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoinData coinData = (CoinData) o;
+        return Objects.equals(id, coinData.id) &&
+                Objects.equals(name, coinData.name) &&
+                Objects.equals(symbol, coinData.symbol) &&
+                Objects.equals(slug, coinData.slug) &&
+                Objects.equals(cmcRank, coinData.cmcRank) &&
+                Objects.equals(numMarketPairs, coinData.numMarketPairs) &&
+                Objects.equals(circulatingSupply, coinData.circulatingSupply) &&
+                Objects.equals(totalSupply, coinData.totalSupply) &&
+                Objects.equals(maxSupply, coinData.maxSupply) &&
+                Objects.equals(last_updated, coinData.last_updated) &&
+                Arrays.equals(quote, coinData.quote);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, name, symbol, slug, cmcRank, numMarketPairs, circulatingSupply, totalSupply, maxSupply, last_updated);
+        result = 31 * result + Arrays.hashCode(quote);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CoinData{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", slug='" + slug + '\'' +
+                ", cmcRank='" + cmcRank + '\'' +
+                ", numMarketPairs='" + numMarketPairs + '\'' +
+                ", circulatingSupply='" + circulatingSupply + '\'' +
+                ", totalSupply='" + totalSupply + '\'' +
+                ", maxSupply='" + maxSupply + '\'' +
+                ", last_updated='" + last_updated + '\'' +
+                ", quote=" + Arrays.toString(quote) +
+                '}';
     }
 }
