@@ -9,6 +9,7 @@ public class CLIArguments {
     @Parameter(
             required = true,
             descriptionKey = "COIN",
+            validateWith = CLIHelpValidator.class,
             description = "COIN"
     )
      private String coin;
@@ -18,11 +19,24 @@ public class CLIArguments {
      )
      private int id;
       @Parameter(
-              names= {"--allCoins, all"},
+              names= {"--all-coins, all"},
               description = "muestra todo"
       )
      private String allCoins;
+
+      @Parameter(
+              names ={"--markdown"},
+              description = "obtener los resultados en markdown"
+      )
      private boolean isMarkdown = false;
+
+      @Parameter(
+              names = "--help",
+              help = true,
+              validateWith = CLIHelpValidator.class,
+              description = "mostrar la ayuda"
+      )
+
      private boolean isHelp;
 
     public String getCoin() {
